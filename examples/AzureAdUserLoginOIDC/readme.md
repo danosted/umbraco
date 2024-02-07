@@ -34,3 +34,4 @@ The general requirements are the following:
     - Description = Admins have the corresponding admin role in umbraco.
 10. Go to the corresponding Enterprise App for you app registration
 11. Add a User or Group with the designated App role you defined.
+12. You can now login with your Azure AD managed user.
