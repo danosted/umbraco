@@ -10,7 +10,11 @@ public struct AzureAdOICDConfig
     public string? ClientSecret { get; init; }
     public string? CallbackPath { get; init; }
     public string? LoginBtnDisplayName { get; init; }
-    public bool IsValid => TenantId is not null && ClientId is not null && ClientSecret is not null && CallbackPath is not null;
+    public bool IsValid =>
+        string.IsNullOrEmpty(TenantId) is false
+        && string.IsNullOrEmpty(ClientId) is false
+        && string.IsNullOrEmpty(ClientSecret) is false
+        && string.IsNullOrEmpty(CallbackPath) is false;
 }
 
 public static class BackOfficeUserAuthenticationExtensions

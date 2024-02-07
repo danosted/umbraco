@@ -9,7 +9,7 @@ Extensions used to setup OpenID Connect and the related events.
 3. <a href="Program.cs" target="_blank">Program.cs</a><br />
 Adding the AzureAD login extension method to the builder setup.
 3. <a href="appsettings.json" target="_blank">appsettings.json</a><br />
-Configuration example for completion - this should be added through environment variables or some other means for each environment.
+Configuration example - these values should be added through environment variables or some other means for each environment.
 
 # Azure AD Setup
 This example assumes you have knowledge of how to setup an app registration in Azure Portal.
