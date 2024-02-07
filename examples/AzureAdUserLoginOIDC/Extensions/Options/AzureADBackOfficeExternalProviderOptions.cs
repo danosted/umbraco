@@ -56,12 +56,12 @@ public class AzureADBackOfficeExternalProviderOptions() : IConfigureNamedOptions
                 // Constants.Security.EditorGroupAlias
                 // Constants.Security.AdminGroupAlias
                 // ...
-                var roleId = loginInfo.Principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+                var roleClaimList = loginInfo.Principal.Claims.Where(c => c.Type == ClaimTypes.Role)?.ToList();
                 var email = loginInfo.Principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
                 var name = loginInfo.Principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
 
                 // Check if the user has been assigned access through azure
-                if (roleId is null || email is null || name is null)
+                if (roleClaimList is null || roleClaimList.Count is 0 || email is null || name is null)
                 {
                     // User fields are not persisted when login is disabled per v13.1.0
                     // Thus we cannot disable or do anything clever like that on the user object
@@ -74,8 +74,12 @@ public class AzureADBackOfficeExternalProviderOptions() : IConfigureNamedOptions
                 // Reset roles first to remove any previously assigned roles that might no longer be assigned in azure
                 user.Roles = [];
 
-                // Add the designated role returned by claims
-                user.AddRole(roleId);
+                // Add the designated roles returned by claims
+                foreach (var roleClaim in roleClaimList)
+                {
+                    if (user.Roles.Any(r => r.RoleId == roleClaim.Value)) continue;
+                    user.AddRole(roleClaim.Value);
+                }
 
                 // Approve the user (this cannot be set to false again - a user needs to be manually cleaned up in the backoffice)
                 user.IsApproved = true;
