@@ -37,9 +37,9 @@ public class AzureADBackOfficeExternalProviderOptions() : IConfigureNamedOptions
             // It can be dynamically assigned in the OnAutoLinking callback.
             defaultCulture: null,
 
-            // [OPTIONAL]
             // Default: "Editor"
-            // Specify User Group.
+            // We define an empty array to make sure we only assign the roles
+            // that are returned in the claims
             defaultUserGroups: []
 
         )

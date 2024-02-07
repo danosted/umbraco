@@ -13,13 +13,13 @@ Configuration example - these values should be added through environment variabl
 
 # Azure AD Setup
 This example assumes you have knowledge of how to setup an app registration in Azure Portal.
-The generalt requirements are the following:
+The general requirements are the following:
 
 1. Create an App Registration in Azure Portal to get the ClientId
 2. Add a secret (ClientSecret)
-3. Copy ClientId and ClientSecret from Azure Portal to your configuration
-4. Go to authentication and insert your redirect URI. Remember to append the **CallbackPath** as defined in your configuration.
-5. Check the ID tokens in authentication.
+3. Copy ClientId and ClientSecret from Azure Portal to your appsettings configuration
+4. Go to back to App registration **Authentication** section and insert your redirect URI. Remember to append the **CallbackPath** as defined in your configuration.
+5. Check the ID tokens checkbox in authentication and save.
 6. Go to **Token configuration**. Add groups claim and choose the option for **Groups assigned to the application**.
 7. Add optional claims (ID) and accept the API permissions prompt:
     - email
