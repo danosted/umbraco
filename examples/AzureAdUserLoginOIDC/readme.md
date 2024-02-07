@@ -1,5 +1,5 @@
 # Umbraco Azure AD OIDC example package
-This example shows how OpenID Connect can be used for backoffice users in Umbraco.
+This example shows how OpenID Connect can be used for Azure AD managed backoffice users in Umbraco.
 
 # Important files
 1. <a href="./Extensions/Options/AzureADBackOfficeExternalProviderOptions.cs" target="_blank">AzureADBackOfficeExternalProviderOptions.cs</a><br />
